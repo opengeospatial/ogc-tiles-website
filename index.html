@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>OGC API - Tiles</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top">
+                    HOME
+                    <!--img(src='assets/img/navbar-logo.svg', alt='...')-->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#background">Background</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#standard">Standard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#inaction">In Action</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#getstarted">Get Started</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#getinvolved">Get Involved</a></li>
+                    </ul>
+                </div>
+                <a href="https://github.com/opengeospatial/ogc-tiles-website"><img style="position: absolute; top: 0; right: 0; border: 0" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-heading text-uppercase">OGC API - Tiles</div>
+                <div class="masthead-subheading">Creating tiled maps</div>
+                <a class="btn btn-primary btn-xl text-uppercase" href="#background">Tell Me More</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="#standard">Get Started</a>
+            </div>
+        </header>
+        <!-- Background-->
+        <section class="page-section" id="background">
+            <div class="container">
+                <div class="text-center"><h2 class="section-heading text-uppercase">How Tiled Maps work</h2></div>
+                <div class="row text-justified">
+                    <div class="col-md-6">
+                        <p class="text-muted">
+                            The first web maps were provided by services that would generate map images on demand. The Web Map Service (e.g.
+                            <a href="#https://en.wikipedia.org/wiki/Web_Map_Service">WMS</a>
+                            ), part of the first generation of OGC standards, is an example of this.
+                        </p>
+                        <p class="text-muted">In the early 2000's, Google has paved the way for a more efficient way of serving maps, by pre-rendering images (e.g.: tiles) and organising them into pyramids of regular grids (e.g.: tilesets).The conceptual model that allows clients to retrieve tiles in this pyramid is called a tiling scheme. In a XYZ scheme, which is what we see in most of the web map services today, each tile can be identified by three parameters: zoom level (Z), column (X), and row (Y)</p>
+                        <p class="text-muted">
+                            In an XYZ tileset, the top tile (0/0/0) covers the minimum zoom level (generally the entire world) and subsequent levels contain four tiles, for each one of the tiles above until we reach the maximum zoom level (e.g.: generally around 18-25). The url template to request a tile is usually something like:
+                            <code>https://somehost.com/tiles/{z}/{x}/{y}.png</code>
+                            , where {z} is a placeholder for the zoom level, {x} for the column number, and {y} for the row number.
+                        </p>
+                        <p class="text-muted">Things like the projection used to render the tiles, the available zoom levels and even the url template may vary from tileset to tileset. The fact that there is no standard way of advertising this information is responsible for degrading the interoperability between web map servers and clients. In other words, if one writes a mapping client there is no guarantee that I they be able to consume tiles from different servers and vice-versa.</p>
+                    </div>
+                    <div class="col-md-6"><img src="assets/img/tileset.png" title="Source: https://demo.ldproxy.net/daraa" alt=".." /></div>
+                </div>
+            </div>
+        </section>
+        <!-- Standard-->
+        <section class="page-section bg-light" id="standard">
+            <div class="container">
+                <div class="text-center"><h2 class="section-heading text-uppercase">Standard</h2></div>
+                <div class="row text-justified">
+                    <div class="col-md-6">
+                        <p class="text-muted">The OGC API - Tiles standard describes how mapping clients (e.g: web pages, desktop applications) can get information about tilesets and how to request the tiled data itself. It basically adds a some formality to what people have been doing for years with XYZ tilesets, while adding support for more complex use cases.</p>
+                        <p class="text-muted">As other OGC APIs, the standard is organised in a serious of building blocks, which are mapped to conformance classes. One may choose to conform to one or more conformance classes, according to the complexity of the use case and the aimed degree of interoperability.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-muted">The core conformance class boils down to three simple requirements, which capture what most of the web map applications are already doing:</p>
+                        <div class="text-left">
+                            <ul>
+                                <li>
+                                    <p class="text-muted">
+                                        Tiles must be available using a URL following a template like:
+                                        <code>https://somehost.com/tiles/{z}/{x}/{y}.png</code>
+                                    </p>
+                                </li>
+                                <li><p class="text-muted">Successful responses must return an http response with a 200 status code.</p></li>
+                                <li><p class="text-muted">If the requested tile is out-of range, a 400 or 404 status codes should be returned (204, in the case of empty tiles).</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-justified">
+                    <div class="col-md-6"><p class="text-muted">If you choose to also confom to “OGC API - Common - Part 1: Core”, then the {z}, {x} and {y} parameters need to be renamed to {tileMatrix} and {tileCol}. A server that conforms to all the requirements above, can advertise it in a specific conformance endpoint:</p></div>
+                </div>
+            </div>
+        </section>
+        <!-- In action-->
+        <section class="page-section" id="inaction">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">See it In Action</h2>
+                    <h3 class="section-subheading text-muted">
+                        This is a list of server implementations, that provide data. Please
+                        <a href="mailto:jsimoes@ogc.org">get in touch</a>
+                        , if you would like to add your server to the list.
+                    </h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/ldproxy1.png" alt="..." />
+                            <h4>Vineyards in Rhineland-Palatinate, Germany</h4>
+                            <p class="text-muted">Powered by Ldproxy</p>
+                            <p class="text-muted">Have you ever wondered where the wine that you are drinking comes from? If the wine comes from the wine-growing regions Mosel, Nahe, Rheinhessen, Pfalz, Ahr, or Mittelrhein you can find this information in this API.</p>
+                            <a class="btn btn-dark btn-social mx-2" href="https://demo.ldproxy.net/vineyards" title="Collection Resource" target="_blank"><i class="fa fa-link"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://demo.ldproxy.net/vineyards/api/" title="OpenAPI definition" target="_blank"><i class="fa fa-code"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/pygeoapi.png" alt="..." />
+                            <h4>Portuguese Points of Interest</h4>
+                            <p class="text-muted">Powered by Pygeoapi</p>
+                            <p class="text-muted">Portuguese Points of Interest obtained from OpenStreetMap. Dataset includes Madeira and Azores islands. Uses GeoPackage backend via OGR provider.</p>
+                            <a class="btn btn-dark btn-social mx-2" href="https://demo.pygeoapi.io/master/collections/ogr_gpkg_poi" title="Collection Resource" target="_blank"><i class="fa fa-link"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://demo.pygeoapi.io/master/openapi?f=html" title="OpenAPI definition" target="_blank"><i class="fa fa-code"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/cubewerx.png" alt="..." />
+                            <h4>Zaatari Refugee Camp مخيم الزعتري</h4>
+                            <p class="text-muted">Powered by CubeWerx</p>
+                            <p class="text-muted">Zaatari is a refugee camp in Jordan, located 10 kilometres east of Mafraq, which has gradually evolved into a permanent settlement; it is the world’s largest camp for Syrian refugees.</p>
+                            <a class="btn btn-dark btn-social mx-2" href="https://www.pvretano.com/cubewerx/cubeserv/default/ogcapi/zaatari" title="Collection Resource" target="_blank"><i class="fa fa-link"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://www.pvretano.com/cubewerx/cubeserv/default/ogcapi/zaatari/api?f=html" title="OpenAPI definition" target="_blank"><i class="fa fa-code"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/os-ngd-api-features.png" alt="..." />
+                            <h4>OS NGD API – Features</h4>
+                            <p class="text-muted">Powered by The OS Data Hub</p>
+                            <p class="text-muted">Easy online access to the OS National Geographic Database, providing a rich and consistent information about the real world.</p>
+                            <a class="btn btn-dark btn-social mx-2" href="https://osdatahub.os.uk/" title="Collection Resource" target="_blank"><i class="fa fa-link"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://osngd.gitbook.io/osngd/accessing-os-ngd/access-the-os-ngd-api-features" title="API documentation" target="_blank"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/OSMOttawa.png" alt="..." />
+                            <h4>Ottawa OpenStreetMap roads</h4>
+                            <p class="text-muted">Powered by GNOSIS</p>
+                            <p class="text-muted">OpenStreetMap (OSM) is a free, open geographic database updated and maintained by a community of volunteers via open collaboration. This dataset is an OpenStreetMap extract that contains the roads of Ottawa, Canada.</p>
+                            <a class="btn btn-dark btn-social mx-2" href="https://maps.gnosis.earth/ogcapi/collections/osm:ottawa:roads" title="Collection Resource" target="_blank"><i class="fa fa-link"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://maps.gnosis.earth/ogcapi/api" title="OpenAPI definition" target="_blank"><i class="fa fa-code"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/wetlands.png" alt="..." />
+                            <h4>Geographic Objects from the National Cartographic System of Spain</h4>
+                            <p class="text-muted">Powered by pygeoapi</p>
+                            <p class="text-muted">Includes collections such as Hydrography, Transport Networks, CartoCiudad postal addresses and the Information System on Land Occupation of Spain 2014 (SIOSE).</p>
+                            <a class="btn btn-dark btn-social mx-2" href="https://api-features.idee.es/collections?f=html&amp;lang=en" title="Collections Resource" target="_blank"><i class="fa fa-link"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="https://api-features.idee.es/openapi?f=html" title="OpenAPI definition" target="_blank"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="page-section" id="implementations">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Use it</h2>
+                    <h3 class="section-subheading text-muted">Do you want to start using OGC API Features? Before starting to implement the spec, please take a look at the existing implementations.</h3>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col" colspan="5" class="table-dark">Servers by Technology</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" rowspan="3" class="table-info">
+                                    Java
+                                    <i class="fab fa-java"></i>
+                                </th>
+                                <td>
+                                    Ldproxy
+                                    <sup>*</sup>
+                                </td>
+                                <td title="Github repository">
+                                    <a href="https://github.com/interactive-instruments/ldproxy"><i class="fab fa-github"></i></a>
+                                </td>
+                                <td title="Docker image">
+                                    <a href="https://hub.docker.com/r/iide/ldproxy/"><i class="fab fa-docker"></i></a>
+                                </td>
+                                <td title="Tutorial/Example">
+                                    <a href="https://github.com/interactive-instruments/ldproxy/tree/master/demo/vineyards">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        /
+                                        <i class="fas fa-code"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Geoserver</td>
+                                <td title="Github repository">
+                                    <a href="https://github.com/geoserver/geoserver"><i class="fab fa-github"></i></a>
+                                </td>
+                                <td title="Docker image">
+                                    <a href="https://hub.docker.com/r/oscarfonts/geoserver"><i class="fab fa-docker"></i></a>
+                                </td>
+                                <td title="Tutorial/Example">
+                                    <a href="https://docs.geoserver.org/latest/en/user/community/ogc-api/install.html">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        /
+                                        <i class="fas fa-code"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Deegree
+                                    <sup>*</sup>
+                                </td>
+                                <td title="Github repository">
+                                    <a href="https://github.com/deegree/deegree-ogcapi"><i class="fab fa-github"></i></a>
+                                </td>
+                                <td title="Docker image"></td>
+                                <td title="Tutorial/Example">
+                                    <a href="https://oaf.lat-lon.de/deegree-services-oaf/documentation/index.html">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        /
+                                        <i class="fas fa-code"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" rowspan="2" class="table-info">
+                                    Python
+                                    <i class="fab fa-python"></i>
+                                </th>
+                                <td>
+                                    pygeoapi
+                                    <sup>*</sup>
+                                </td>
+                                <td title="Github repository">
+                                    <a href="https://github.com/geopython/pygeoapi"><i class="fab fa-github"></i></a>
+                                </td>
+                                <td title="Docker image">
+                                    <a href="https://hub.docker.com/r/geopython/pygeoapi"><i class="fab fa-docker"></i></a>
+                                </td>
+                                <td title="Tutorial/Example">
+                                    <a href="https://docs.pygeoapi.io/en/latest/">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        /
+                                        <i class="fas fa-code"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>GeoPortal</td>
+                                <td title="Github repository">
+                                    <a href="https://github.com/mrmap-community/GeoPortal.rlp"><i class="fab fa-github"></i></a>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="table-info">
+                                    JavaScript
+                                    <i class="fab fa-js"></i>
+                                </th>
+                                <td>Sofp</td>
+                                <td title="Github repository">
+                                    <a href="https://github.com/vaisala-oss/sofp-core"><i class="fab fa-github"></i></a>
+                                    <a href="https://github.com/vaisala-oss/sofp-lib"><i class="fab fa-github"></i></a>
+                                </td>
+                                <td title="Docker image">
+                                    <a href="https://hub.docker.com/r/sofp/core"><i class="fab fa-docker"></i></a>
+                                    <a href="https://hub.docker.com/r/sofp/example-backend"><i class="fab fa-docker"></i></a>
+                                </td>
+                                <td title="Tutorial/Example">
+                                    <a href="https://github.com/vaisala-oss/sofp-example-backend">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        /
+                                        <i class="fas fa-code"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" rowspan="2" class="table-info">C/C++</th>
+                                <td>QGIS Server</td>
+                                <td title="Github repository">
+                                    <a href="https://github.com/qgis/QGIS/"><i class="fab fa-github"></i></a>
+                                </td>
+                                <td title="Docker image">
+                                    <a href="https://hub.docker.com/r/kartoza/qgis-server"><i class="fab fa-docker"></i></a>
+                                </td>
+                                <td title="Tutorial/Example">
+                                    <a href="https://docs.qgis.org/testing/en/docs/server_manual/services.html#wfs3-ogc-api-features">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        /
+                                        <i class="fas fa-code"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    GNOSIS Map Server
+                                    <sup>*</sup>
+                                </td>
+                                <td title="Website">
+                                    <a href="https://ecere.ca/gnosis/"><i class="fas fa-link"></i></a>
+                                </td>
+                                <td title="Docker image"></td>
+                                <td title="Tutorial/Example"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col" colspan="5" class="table-dark">Clients by Technology</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" rowspan="2" class="table-info">
+                                    Python
+                                    <i class="fab fa-python"></i>
+                                </th>
+                                <td>OWSLib</td>
+                                <td title="Github repository">
+                                    <a href="https://github.com/geopython/OWSLib"><i class="fab fa-github"></i></a>
+                                </td>
+                                <td title="Code sample/Documentation">
+                                    <a href="https://geopython.github.io/OWSLib/usage.html#ogc-api-features-1-0">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        /
+                                        <i class="fas fa-code"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Pygdal</td>
+                                <td title="Github repository">
+                                    <a href="https://github.com/nextgis/pygdal"><i class="fab fa-github"></i></a>
+                                </td>
+                                <td colspan="2">
+                                    Check
+                                    <a href="https://gdal.org/drivers/vector/oapif.html">GDAL's documentation</a>
+                                    .
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="table-info">
+                                    JavaScript
+                                    <i class="fab fa-js"></i>
+                                </th>
+                                <td>ogcapi-js</td>
+                                <td title="Github repository">
+                                    <a href="https://github.com/haoliangyu/ogcapi-js"><i class="fab fa-github"></i></a>
+                                </td>
+                                <td title="Tutorial/Example">
+                                    <a href="https://haoliangyu.github.io/ogcapi-js/">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        /
+                                        <i class="fas fa-code"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="table-info">C/C++</th>
+                                <td>GDAL</td>
+                                <td title="Github repository">
+                                    <a href="https://github.com/OSGeo/gdal"><i class="fab fa-github"></i></a>
+                                </td>
+                                <td title="Tutorial/Example">
+                                    <a href="https://gdal.org/drivers/vector/oapif.html">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        /
+                                        <i class="fas fa-code"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="table-info">
+                                    Integration framework
+                                    <i class="fa fa-wrench"></i>
+                                </th>
+                                <td>Apache Camel</td>
+                                <td title="Github repository">
+                                    <a href="https://github.com/KaotoIO/step-extension-ogcapi-features-action"><i class="fab fa-github"></i></a>
+                                    <a href="https://github.com/apache/camel-kamelets/blob/main/kamelets/ogcapi-features-action.kamelet.yaml"><i class="fab fa-github"></i></a>
+                                </td>
+                                <td title="Tutorial/Example">
+                                    <a href="https://kaoto.io/portfolio/">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        /
+                                        <i class="fas fa-code"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 class="section-subheading text-muted">
+                        <sup>*</sup>
+                        Certified
+                        <a href="https://www.ogc.org/compliance" title="Compliance" target="_blank">compliant</a>
+                        product.
+                    </h3>
+                </div>
+            </div>
+        </section>
+        <section class="page-section" id="adopters">
+            <div class="container">
+                <div class="text-center"><h2 class="section-heading text-uppercase">Who is behind OGC API Features?</h2></div>
+                <p class="text-muted">
+                    OGC API Features is developed through a member-driven consensus process, which creates royalty free, publicly available, open geospatial standards. The
+                    <a href="https://www.ogc.org/">Open Geospatial Consortium (OGC)</a>
+                    is the organisation which drives this process. It is supported by an active community of members, with involvement from a large range of organizations, as well as smaller ones.
+                    <a href="https://www.ogc.org/ogc/join/levels">Join OGC today!</a>
+                </p>
+                <div class="py-5">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-4 col-sm-6 my-4">
+                                <a href="https://www.interactive-instruments.de/en/"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/interactive-instruments.svg" alt="..." /></a>
+                            </div>
+                            <div class="col-md-4 col-sm-6 my-4">
+                                <a href='https://ecere.ca/"'><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/ecere.svg" alt="..." /></a>
+                            </div>
+                            <div class="col-md-4 col-sm-6 my-4">
+                                <a href="https://www.ordnancesurvey.co.uk/"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/os.svg" alt="..." /></a>
+                            </div>
+                            <div class="col-md-4 col-sm-6 my-4">
+                                <a href="https://natural-resources.canada.ca/home"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/nrcan.svg" alt="..." /></a>
+                            </div>
+                            <div class="col-md-4 col-sm-6 my-4">
+                                <a href="https://www.esa.int/"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/esa.svg" alt="..." /></a>
+                            </div>
+                            <div class="col-md-4 col-sm-6 my-4">
+                                <a href="https://www.cubic.com/"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/cubic.svg" alt="..." /></a>
+                            </div>
+                            <div class="col-md-4 col-sm-6 my-4">
+                                <a href="https://hexagon.com/"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/hexagon.svg" alt="..." /></a>
+                            </div>
+                            <div class="col-md-4 col-sm-6 my-4">
+                                <a href="https://www.trimble.com/en"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/TrimbleR-Horiz-RGB-Blue.svg" alt="..." /></a>
+                            </div>
+                            <div class="col-md-4 col-sm-6 my-4">
+                                <a href="https://i-bitz.co.th/"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/i-bitz_logo.svg" alt="..." /></a>
+                            </div>
+                            <div class="col-md-4 col-sm- my-4">
+                                <a href="https://www.maxar.com/"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/maxar_gold_logo_rgb.svg" alt="..." /></a>
+                            </div>
+                            <div class="col-md-4 col-sm-6 my-4">
+                                <a href="https://www.microsoft.com/"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/microsoft2.svg" alt="..." /></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-muted small">The logos above are a small subset of all OGC members. They are either strategic/principal members, and/or organisations who implement products certified for OGC API Features.</p>
+            </div>
+        </section>
+        <!-- Get started-->
+        <section class="page-section bg-light" id="getstarted">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Get Started</h2>
+                    <h3 class="section-subheading text-muted">Here is something to get you started.</h3>
+                </div>
+                <ul class="timeline">
+                    <li>
+                        <div class="timeline-image">
+                            <a href="http://opengeospatial.github.io/e-learning/ogcapi-features/text/basic-index.html" title="E-learning" target="_blank"><img class="rounded-circle img-fluid" src="assets/img/about/elearning.jpeg" alt="..." /></a>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading"><h4 class="subheading">Complete an online training</h4></div>
+                            <div class="timeline-body"><p class="text-muted">If you are familiar with web services and APIs, and want to have an overview of the OGC API - Features standard, this training is for you.</p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image">
+                            <a href="https://dev.to/doublebyte/sharing-geospatial-data-with-ogc-api-pygeoapi-and-mongodb-4lo7" title="E-learning" target="_blank"><img class="rounded-circle img-fluid" src="assets/img/about/sawcer.jpeg" alt="..." /></a>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading"><h4 class="subheading">Follow a tutorial</h4></div>
+                            <div class="timeline-body">
+                                <p class="text-muted">
+                                    Implement a complete pipeline to make your data available with OGC API - Features, using a stack of free and open source software. A video version is available
+                                    <a href="https://dev.to/doublebyte/how-to-share-geospatial-data-on-the-web-54b7">here.</a>
+                                </p>
+                            </div>
+                            <!--a.btn.btn-dark.btn-social.mx-2(href='http://opengeospatial.github.io/e-learning/ogcapi-features/text/basic-index.html' title='E-learning' target="_blank")i.fa.fa-link-->
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <a href="#getinvolved" title="Get Involved">
+                            <div class="timeline-image">
+                                <h4>
+                                    Get
+                                    <br />
+                                    Involved!
+                                </h4>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- Get involved-->
+        <section class="page-section" id="getinvolved">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Get Involved</h2>
+                    <h3 class="section-subheading text-muted">Tell us what’s working well, what you want to see added or improved, and find out about new updates.</h3>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <a href="https://stackoverflow.com/search?q=ogc+api+features" title="Stack Overflow">
+                                <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                                <i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                            </a>
+                        </span>
+                        <h4 class="my-3">Stack Overflow</h4>
+                        <p class="text-muted">Engage with your peers and ask questions about OGC API Features using the tag 'OGC API Features'</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <a href="https://discord.gg/3uyaZZuXr3" title="Discord">
+                                <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                                <i class="fab fa-discord fa-stack-1x fa-inverse"></i>
+                            </a>
+                        </span>
+                        <h4 class="my-3">Discord</h4>
+                        <p class="text-muted">Chat with other OGC API Features users in the OGC Community channel.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <a href="https://github.com/opengeospatial/ogcapi-features" title="Github">
+                                <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </a>
+                        </span>
+                        <h4 class="my-3">GitHub</h4>
+                        <p class="text-muted">Found a bug, or want to give us constructive feedback?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-start">Copyright &copy; 2021. Open Geospatial Consortium all rights reserved</div>
+                    <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" href="https://twitter.com/opengeospatial/"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.youtube.com/user/ogcvideo"><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/company/open-geospatial-consortium"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="col-lg-4 text-lg-end"><a class="link-dark text-decoration-none me-3" data-bs-toggle="modal" data-bs-target="#portfolioModal1">Privacy Policy</a></div>
+                </div>
+            </div>
+        </footer>
+        <!-- Portfolio Modals-->
+        <!-- Portfolio item 1 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Privacy Policy</h2>
+                                    <p class="item-intro text-muted">OGC API Features does not log or share your personal information.</p>
+                                    <p>We don't track you. We don't profile you. Period</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 2 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Project Name</h2>
+                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2.jpg" alt="..." />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Explore
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Graphic Design
+                                        </li>
+                                    </ul>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-times me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 3 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Project Name</h2>
+                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/3.jpg" alt="..." />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Finish
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Identity
+                                        </li>
+                                    </ul>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-times me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 4 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Project Name</h2>
+                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/4.jpg" alt="..." />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Lines
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Branding
+                                        </li>
+                                    </ul>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-times me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 5 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Project Name</h2>
+                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/5.jpg" alt="..." />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Southwest
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Website Design
+                                        </li>
+                                    </ul>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-times me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 6 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Project Name</h2>
+                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/6.jpg" alt="..." />
+                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Window
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Photography
+                                        </li>
+                                    </ul>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-times me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
