@@ -72,10 +72,22 @@ html(lang='en')
                             | ), part of the first generation of OGC standards, is an example of this. 
                         p.text-muted In the early 2000's, Google has paved the way for a more efficient way of serving maps, by pre-rendering images (e.g.: tiles) and organising them into pyramids of regular grids (e.g.: tilesets).
                             | The conceptual model that allows clients to retrieve tiles in this pyramid is called a tiling scheme. 
-                            | In a XYZ scheme, which is what we see in most of the web map services today, each tile can be identified by three parameters: zoom level (Z), column (X), and row (Y)
+                            | In a XYZ scheme, which is what we see in most of the web map services today, each tile can be identified by three parameters: zoom level (
+                            code Z
+                            | ), column (
+                            code X
+                            | ), and row (
+                            code Y
+                            | )
                         p.text-muted In an XYZ tileset, the top tile (0/0/0) covers the minimum zoom level (generally the entire world) and subsequent levels contain four tiles, for each one of the tiles above until we reach the maximum zoom level (e.g.: generally around 18-25). The url template to request a tile is usually something like: 
                             code https://somehost.com/tiles/{z}/{x}/{y}.png
-                            | , where {z} is a placeholder for the zoom level, {x} for the column number, and {y} for the row number.
+                            | , where 
+                            code {z} 
+                            | is a placeholder for the zoom level, 
+                            code {x} 
+                            | for the column number, and 
+                            code {y} 
+                            |for the row number.
                         p.text-muted Things like the projection used to render the tiles, the available zoom levels and even the url template may vary from tileset to tileset. The fact that there was no standard way of advertising this information was responsible for degrading the interoperability between web map servers and clients. 
                             | In other words, if one wrote a mapping client there would be no guarantee that they would be able to consume tiles from different servers and vice-versa. 
                     .col-md-6
@@ -130,28 +142,28 @@ html(lang='en')
                             | A server that conforms to all these requirements, should advertise it in a specific 
                             code /conformance
                             | endpoint.
-                            //- :escape
-                            //-     pre {
-                            //-     pre    "conformsTo": [
-                            //-     pre        "http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/core",
-                            //-     pre        "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/core"
-                            //-     pre    ]
-                            //-     pre }
 
-                //- p.text-muted If you are interested in finding out how-to use other coordinate reference systems, you can 
-                //-     a(href='https://github.com/opengeospatial/ogcapi-features/tree/master/extensions/crs' target="_blank") read this
+                        p.text-muted
+                            | If your tileset has some custom characteristics, you may want clients to know about it, by implementing the Tileset conformance class.
+                            | The information about tilesets - 
+                            a(href="https://docs.ogc.org/is/17-083r4/17-083r4.html#toc20") TileSet metadata 
+                            | - is drawn from another standard: the
+                            a(href="https://docs.ogc.org/is/17-083r4/17-083r4.html") OGC Two Dimensional Tile Matrix Set and Tile Set Metadata
+                            | A tileset that does not cover the entire world, provides a limited set of zoom levels or uses an alternative projection are use cases for providing tileset metadata.
 
-                    |. You can find 
-                    a(href='https://ogcapi.ogc.org/features/' target="_blank") here
-                    
-                    //- |. You can also read 
-                    //- a(href='https://docs.ogc.org/is/17-069r3/17-069r3.html' target="_blank") part 1
-                    //- | and 
-                    //- a(href='https://docs.ogc.org/is/18-058/18-058.html' target="_blank") part 2
-                    | links for different parts of the spec and explore it using 
-                    a(href='https://app.swaggerhub.com/apis/cportele/ogcapi-features-1-example1/1.0.0' target="_blank") Swagger
-                    |.
-                    
+                        p.text-muted
+                            | Finally, the Tileset List Conformance Class provides a list of tileSets, described by a subset of the tileSet metadata and links to access those tileSets.
+                            | It may be useful for servers that want to advertise multiple tileSets.
+
+                        p.text-muted
+                            | If you want to follow the development of the OGC API - Tiles, please refer to the 
+                            a(href="https://github.com/opengeospatial/ogcapi-tiles") GitHub repository. 
+                            If you want to study the API, you can check out the 
+                            a(href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/opengeospatial/ogcapi-tiles/master/openapi/ogcapi-tiles-1.bundled.json") swagger page
+                            | .
+
+                .row.text-center
+                        img(src='assets/img/ogc-api-tiles.png', title='Source: TODO', alt='..')
 
         // In action
         section#inaction.page-section

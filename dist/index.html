@@ -60,11 +60,25 @@
                             <a href="https://en.wikipedia.org/wiki/Web_Map_Service">WMS</a>
                             ), part of the first generation of OGC standards, is an example of this.
                         </p>
-                        <p class="text-muted">In the early 2000's, Google has paved the way for a more efficient way of serving maps, by pre-rendering images (e.g.: tiles) and organising them into pyramids of regular grids (e.g.: tilesets).The conceptual model that allows clients to retrieve tiles in this pyramid is called a tiling scheme. In a XYZ scheme, which is what we see in most of the web map services today, each tile can be identified by three parameters: zoom level (Z), column (X), and row (Y)</p>
+                        <p class="text-muted">
+                            In the early 2000's, Google has paved the way for a more efficient way of serving maps, by pre-rendering images (e.g.: tiles) and organising them into pyramids of regular grids (e.g.: tilesets).The conceptual model that allows clients to retrieve tiles in this pyramid is called a tiling scheme. In a XYZ scheme, which is what we see in most of the web map services today, each tile can be identified by three parameters: zoom level (
+                            <code>Z</code>
+                            ), column (
+                            <code>X</code>
+                            ), and row (
+                            <code>Y</code>
+                            )
+                        </p>
                         <p class="text-muted">
                             In an XYZ tileset, the top tile (0/0/0) covers the minimum zoom level (generally the entire world) and subsequent levels contain four tiles, for each one of the tiles above until we reach the maximum zoom level (e.g.: generally around 18-25). The url template to request a tile is usually something like:
                             <code>https://somehost.com/tiles/{z}/{x}/{y}.png</code>
-                            , where {z} is a placeholder for the zoom level, {x} for the column number, and {y} for the row number.
+                            , where
+                            <code>{z}</code>
+                            is a placeholder for the zoom level,
+                            <code>{x}</code>
+                            for the column number, and
+                            <code>{y}</code>
+                            for the row number.
                         </p>
                         <p class="text-muted">Things like the projection used to render the tiles, the available zoom levels and even the url template may vary from tileset to tileset. The fact that there was no standard way of advertising this information was responsible for degrading the interoperability between web map servers and clients. In other words, if one wrote a mapping client there would be no guarantee that they would be able to consume tiles from different servers and vice-versa.</p>
                     </div>
@@ -134,8 +148,24 @@
                             <code>/conformance</code>
                             endpoint.
                         </p>
+                        <p class="text-muted">
+                            If your tileset has some custom characteristics, you may want clients to know about it, by implementing the Tileset conformance class. The information about tilesets -
+                            <a href="https://docs.ogc.org/is/17-083r4/17-083r4.html#toc20">TileSet metadata</a>
+                            - is drawn from another standard: the
+                            <a href="https://docs.ogc.org/is/17-083r4/17-083r4.html">OGC Two Dimensional Tile Matrix Set and Tile Set Metadata</a>
+                            A tileset that does not cover the entire world, provides a limited set of zoom levels or uses an alternative projection are use cases for providing tileset metadata.
+                        </p>
+                        <p class="text-muted">Finally, the Tileset List Conformance Class provides a list of tileSets, described by a subset of the tileSet metadata and links to access those tileSets. It may be useful for servers that want to advertise multiple tileSets.</p>
+                        <p class="text-muted">
+                            If you want to follow the development of the OGC API - Tiles, please refer to the
+                            <a href="https://github.com/opengeospatial/ogcapi-tiles">GitHub repository.</a>
+                            <If>you want to study the API, you can check out the</If>
+                            <a href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/opengeospatial/ogcapi-tiles/master/openapi/ogcapi-tiles-1.bundled.json">swagger page</a>
+                            .
+                        </p>
                     </div>
                 </div>
+                <div class="row text-center"><img src="assets/img/ogc-api-tiles.png" title="Source: TODO" alt=".." /></div>
             </div>
         </section>
         <!-- In action-->
@@ -623,7 +653,7 @@
                                 <div class="modal-body">
                                     <!-- Project details-->
                                     <h2 class="text-uppercase">Privacy Policy</h2>
-                                    <p class="item-intro text-muted">OGC API Features does not log or share your personal information.</p>
+                                    <p class="item-intro text-muted">OGC API - Tiles does not log or share your personal information.</p>
                                     <p>We don't track you. We don't profile you. Period</p>
                                 </div>
                             </div>
