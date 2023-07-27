@@ -68,7 +68,7 @@ html(lang='en')
                     .col-md-6
                         p.text-muted The first web maps were provided by services that would generate map images on demand.  
                             | The Web Map Service (e.g.
-                            a(href='#https://en.wikipedia.org/wiki/Web_Map_Service') WMS
+                            a(href='https://en.wikipedia.org/wiki/Web_Map_Service') WMS
                             | ), part of the first generation of OGC standards, is an example of this. 
                         p.text-muted In the early 2000's, Google has paved the way for a more efficient way of serving maps, by pre-rendering images (e.g.: tiles) and organising them into pyramids of regular grids (e.g.: tilesets).
                             | The conceptual model that allows clients to retrieve tiles in this pyramid is called a tiling scheme. 
@@ -76,10 +76,10 @@ html(lang='en')
                         p.text-muted In an XYZ tileset, the top tile (0/0/0) covers the minimum zoom level (generally the entire world) and subsequent levels contain four tiles, for each one of the tiles above until we reach the maximum zoom level (e.g.: generally around 18-25). The url template to request a tile is usually something like: 
                             code https://somehost.com/tiles/{z}/{x}/{y}.png
                             | , where {z} is a placeholder for the zoom level, {x} for the column number, and {y} for the row number.
-                        p.text-muted Things like the projection used to render the tiles, the available zoom levels and even the url template may vary from tileset to tileset. The fact that there is no standard way of advertising this information is responsible for degrading the interoperability between web map servers and clients. 
-                            | In other words, if one writes a mapping client there is no guarantee that I they be able to consume tiles from different servers and vice-versa. 
+                        p.text-muted Things like the projection used to render the tiles, the available zoom levels and even the url template may vary from tileset to tileset. The fact that there was no standard way of advertising this information was responsible for degrading the interoperability between web map servers and clients. 
+                            | In other words, if one wrote a mapping client there would be no guarantee that they would be able to consume tiles from different servers and vice-versa. 
                     .col-md-6
-                        img(src='assets/img/tileset.png', title='Source: https://demo.ldproxy.net/daraa', alt='..')
+                        img(src='assets/img/tileset.png', title='Source: TODO', alt='..')
 
         // Standard
         section#standard.page-section.bg-light
@@ -89,27 +89,54 @@ html(lang='en')
                 .row.text-justified
                     .col-md-6
                         p.text-muted
-                            | The OGC API - Tiles standard describes how mapping clients (e.g: web pages, desktop applications) can get information about tilesets and how to request the tiled data itself. 
-                            | It basically adds a some formality to what people have been doing for years with XYZ tilesets, while adding support for more complex use cases.
-                        p.text-muted As other OGC APIs, the standard is organised in a serious of building blocks, which are mapped to conformance classes. 
+                            | The 
+                            a(href='https://docs.ogc.org/is/20-057/20-057.html') OGC API - Tiles 
+                            | standard describes how mapping clients (e.g: web pages, desktop applications) can get information about tilesets and how to request the tiled data itself. 
+                            | It basically adds some formality to what people have been doing for years with XYZ tilesets, while adding support for more complex use cases.
+                        p.text-muted As other OGC APIs, the standard is organised in a serious of 
+                            a(href='https://blocks.ogc.org/') building blocks
+                            | , which are mapped to conformance classes. 
                             | One may choose to conform to one or more conformance classes, according to the complexity of the use case and the aimed degree of interoperability.
-                    .col-md-6
                         p.text-muted
-                            | The core conformance class boils down to three simple requirements, which capture what most of the web map applications are already doing:
+                            | The core conformance class boils down to three simple requirements ( 
+                            a(href='https://docs.ogc.org/is/20-057/20-057.html#req_core_tc-op') 1
+                            |,
+                            a(href='https://docs.ogc.org/is/20-057/20-057.html#req_core_core_tc-success') 5
+                            | and 
+                            a(href='https://docs.ogc.org/is/20-057/20-057.html#req_core_core_tc-error') 6
+                            | ), which capture what most web map applications are already doing:
                         .text-left
                             ul
                                 li
                                     p.text-muted Tiles must be available using a URL following a template like:
                                         code https://somehost.com/tiles/{z}/{x}/{y}.png
                                 li
-                                    p.text-muted Successful responses must return an http response with a 200 status code.
+                                    p.text-muted Successful responses must return an http response with a 
+                                        code 200 
+                                        | status code.
                                 li
-                                    p.text-muted If the requested tile is out-of range, a 400 or 404 status codes should be returned (204, in the case of empty tiles).
-                .row.text-justified
+                                    p.text-muted If the requested tile is out-of range, a 
+                                        code 400 
+                                        | or 
+                                        code 404
+                                        | status codes should be returned (
+                                        code 204
+                                        | , in the case of empty tiles).
                     .col-md-6
                         p.text-muted
-                            | If you choose to also confom to “OGC API - Common - Part 1: Core”, then the {z}, {x} and {y} parameters need to be renamed to {tileMatrix} and {tileCol}.
-                            | A server that conforms to all the requirements above, can advertise it in a specific conformance endpoint: 
+                            | If you choose to also confom to 
+                            a(href='https://docs.ogc.org/DRAFTS/19-072.html') “OGC API - Common - Part 1: Core”
+                            | , then the {z}, {x} and {y} parameters need to be renamed to {tileMatrix}, {tileCol} and {tileRow}.
+                            | A server that conforms to all these requirements, should advertise it in a specific 
+                            code /conformance
+                            | endpoint.
+                            //- :escape
+                            //-     pre {
+                            //-     pre    "conformsTo": [
+                            //-     pre        "http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/core",
+                            //-     pre        "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/core"
+                            //-     pre    ]
+                            //-     pre }
 
                 //- p.text-muted If you are interested in finding out how-to use other coordinate reference systems, you can 
                 //-     a(href='https://github.com/opengeospatial/ogcapi-features/tree/master/extensions/crs' target="_blank") read this
@@ -477,11 +504,6 @@ html(lang='en')
 
         // Portfolio Modals
         include includes/portfolio-modal-1
-        include includes/portfolio-modal-2
-        include includes/portfolio-modal-3
-        include includes/portfolio-modal-4
-        include includes/portfolio-modal-5
-        include includes/portfolio-modal-6
 
         // Bootstrap core JS
         script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js')
