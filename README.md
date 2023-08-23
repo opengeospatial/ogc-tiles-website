@@ -12,7 +12,7 @@ Build with:
 
 `npm run build`
 
-Publish on GitHub pages with:
+Publish on tiles.developer.ogc.org with:
 
 `git subtree push --prefix dist origin gh-pages`
 
