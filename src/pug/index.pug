@@ -158,12 +158,25 @@ html(lang='en')
                         p.text-muted
                             | If you want to follow the development of the OGC API - Tiles, please refer to the 
                             a(href="https://github.com/opengeospatial/ogcapi-tiles") GitHub repository. 
-                            If you want to study the API, you can check out the 
+                            | If you want to study the API, you can check out the 
                             a(href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/opengeospatial/ogcapi-tiles/master/openapi/ogcapi-tiles-1.bundled.json") swagger page
                             | .
 
-                .row.text-center
-                        img(src='assets/img/ogc-api-tiles.png', title='Source: TODO', alt='..')
+                .row
+                    .col-sm-3
+                        p.text-muted
+                            | The diagram on the left, shows the basic steps a client should follow to access a tile (“OGC API - Common - Part 1: Core”).
+                            | It starts by retrieving the list of collections available on the server and selecting one, in this example, "lakes". 
+                            | Then it retrieves the list of available TileMatrixSets, e.g.: the sets of tiles pre-rendered in a given coordinate reference system, and selects one.
+                            | Finally, it requests a specific tile, using the 
+                            code x,y,z 
+                            | indexes. 
+                    .col-sm-9
+                        img(src='assets/img/ogc-api-tiles.png', width="100%" title='OGC API - Tiles: Access workflow', alt='..')
+                .row
+                        p.text-muted
+                            | In this example we are requesting a vector tile, which is indicated by the file extension. The available formats are retrieved through content negotiation. Assuming a local server, the url path would look like: 
+                            code http://localhost/collections/lakes/tiles/WorldCRS84Quad/0/0/0.pbf
 
         // In action
         section#inaction.page-section
@@ -171,7 +184,7 @@ html(lang='en')
                 .text-center
                     h2.section-heading.text-uppercase See it In Action
                     h3.section-subheading.text-muted This is a list of server implementations, that provide data. Please
-                        a(href='mailto:jsimoes@ogc.org') get in touch
+                        a(href='mailto:devrel@ogc.org') get in touch
                         |, if you would like to add your server to the list.
                        
 
@@ -469,25 +482,17 @@ html(lang='en')
                     h2.section-heading.text-uppercase Get Involved
                     h3.section-subheading.text-muted Tell us what’s working well, what you want to see added or improved, and find out about new updates.
                 .row.text-center
-                    .col-md-4
+                    .col-md-6
                         span.fa-stack.fa-4x
-                            a(href='https://stackoverflow.com/search?q=ogc+api+features' title='Stack Overflow')
-                                i.fas.fa-circle.fa-stack-2x.text-primary
-                                i.fab.fa-stack-overflow.fa-stack-1x.fa-inverse
-                        h4.my-3 Stack Overflow
-                        p.text-muted
-                            | Engage with your peers and ask questions about OGC API Features using the tag 'OGC API Features'
-                    .col-md-4
-                        span.fa-stack.fa-4x
-                            a(href='https://discord.gg/3uyaZZuXr3' title='Discord')                        
+                            a(href='https://discord.gg/SpMckEmXAX' title='Discord')                        
                                 i.fas.fa-circle.fa-stack-2x.text-primary
                                 i.fab.fa-discord.fa-stack-1x.fa-inverse
                         h4.my-3 Discord
                         p.text-muted
-                            | Chat with other OGC API Features users in the OGC Community channel.
-                    .col-md-4
+                            | Chat with other OGC API Tiles users in the OGC Community channel.
+                    .col-md-6
                         span.fa-stack.fa-4x
-                            a(href='https://github.com/opengeospatial/ogcapi-features' title='Github')
+                            a(href='https://github.com/opengeospatial/ogcapi-tiles' title='Github')
                                 i.fas.fa-circle.fa-stack-2x.text-primary
                                 i.fab.fa-github.fa-stack-1x.fa-inverse
                         h4.my-3 GitHub
@@ -500,7 +505,7 @@ html(lang='en')
             .container
                 .row.align-items-center
                     .col-lg-4.text-lg-start
-                        | Copyright &copy; 2021. Open Geospatial Consortium all rights reserved
+                        | Copyright &copy; 2023. Open Geospatial Consortium all rights reserved
                     .col-lg-4.my-3.my-lg-0
                         a.btn.btn-dark.btn-social.mx-2(href='https://twitter.com/opengeospatial/')
                             i.fab.fa-twitter
