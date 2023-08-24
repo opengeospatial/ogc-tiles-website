@@ -11,7 +11,7 @@ html(lang='en')
         title OGC API - Tiles
 
         // Favicon
-        link(rel='icon', type='image/x-icon', href='assets/favicon.ico')
+        link(rel='icon', type='image/x-icon', href='assets/3d_emblem_lockup.ico')
 
         // Font Awesome icons (free version)
         script(src='https://use.fontawesome.com/releases/v5.15.3/js/all.js', crossorigin='anonymous')
@@ -91,7 +91,7 @@ html(lang='en')
                         p.text-muted Things like the projection used to render the tiles, the available zoom levels and even the url template may vary from tileset to tileset. The fact that there was no standard way of advertising this information was responsible for degrading the interoperability between web map servers and clients. 
                             | In other words, if one wrote a mapping client there would be no guarantee that they would be able to consume tiles from different servers and vice-versa. 
                     .col-md-6
-                        img(src='assets/img/tileset.png', title='Source: TODO', alt='..')
+                        img(src='assets/img/tileset.png', title='Source: https://developers.planet.com/blog/2023/May/12/ogc-made-easy-tiling-spec/', alt='..')
 
         // Standard
         section#standard.page-section.bg-light
@@ -259,13 +259,13 @@ html(lang='en')
                         <td>pygeoapi<sup>*</sup></td>
                         <td title="Github repository"><a href="https://github.com/geopython/pygeoapi"><i class="fab fa-github"></i></a></td>
                         <td title="Docker image"><a href="https://hub.docker.com/r/geopython/pygeoapi"><i class="fab fa-docker"></i></a></td>
-                        <td title="Tutorial/Example"><a href="https://docs.pygeoapi.io/en/latest/"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>                
+                        <td title="Tutorial/Example"><a href="https://dive.pygeoapi.io/"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>                
                         </tr>
                         <tr>
                         <td>TiPg</td>
                         <td title="Github repository"><a href="https://github.com/developmentseed/tipg"><i class="fab fa-github"></i></a></td>
-                        <td title="Website"><a href="https://developmentseed.org/tipg/"><i class="fas fa-link"></i></a></td>
-                        <td title="Tutorial/Example"></td>                
+                        <td title="Docker image"></td>
+                        <td title="Tutorial/Example"><a href="https://developmentseed.org/tipg/"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>                
                         </tr>
                         <tr>
                         <th scope="row" rowspan="1" class="table-info">C/C++</th>
@@ -278,8 +278,8 @@ html(lang='en')
                         <th scope="row" rowspan="1" class="table-info">Scala</th>
                         <td>franklin</td>
                         <td title="Github repository"><a href="https://github.com/azavea/franklin"><i class="fab fa-github"></i></a></td>
-                        <td title="Website"><a href="https://azavea.github.io/franklin/"><i class="fas fa-link"></i></a></td>
                         <td title="Docker image"></td>
+                        <td title="Tutorial/Example"><a href="https://azavea.github.io/franklin/docs/introduction"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>
                         </tr>                        
                     </tbody>                        
                     </table>
@@ -301,25 +301,27 @@ html(lang='en')
                         <tr>
                         <th scope="row" rowspan="2" class="table-info">JavaScript <i class="fab fa-js"></i></th>
                         <td>OpenLayers</td>
-                        <td title="Github repository"><a href="https://github.com/haoliangyu/ogcapi-js"><i class="fab fa-github"></i></a></td>
-                        <td title="Tutorial/Example"><a href="https://haoliangyu.github.io/ogcapi-js/"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>                
+                        <td title="Github repository"><a href="https://github.com/openlayers/openlayers"><i class="fab fa-github"></i></a></td>
+                        <td colspan="2" title="Tutorial/Example">
+                            <a href="https://openlayers.org/en/latest/examples/ogc-map-tiles.html"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a>,
+                            <a href="https://openlayers.org/en/latest/examples/ogc-vector-tiles.html"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a>
+                        </td>                
                         </tr>
                         <tr>
                         <td>LuciadRIA</td>
-                        <td title="Github repository"><a href="https://github.com/haoliangyu/ogcapi-js"><i class="fab fa-github"></i></a></td>
-                        <td title="Tutorial/Example"><a href="https://haoliangyu.github.io/ogcapi-js/"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>                
+                        <td title="Website"><a href="https://hexagon.com/products/luciadria"><i class="fas fa-link"></i></a></td>
+                        <td colspan="2" title="Tutorial/Example"></td>                
                         </tr>
                         <tr>
                         <th scope="row" rowspan="2" class="table-info">C/C++</th>
                         <td>GDAL</td>
                         <td title="Github repository"><a href="https://github.com/OSGeo/gdal"><i class="fab fa-github"></i></a></td>
-                        <td title="Tutorial/Example"><a href="https://gdal.org/drivers/vector/oapif.html"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>                
+                        <td colspan="2" title="Tutorial/Example"><a href="https://gdal.org/drivers/vector/oapif.html"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>                
                         </tr>
                         <tr>
                         <td>GNOSIS SDK / Cartographer</td>
                         <td title="Website"><a href="https://ecere.ca/gnosis/"><i class="fas fa-link"></i></a></td>
-                        <td title="Docker image"></td>
-                        <td title="Tutorial/Example"></td>                
+                        <td colspan="2" title="Tutorial/Example"></td>                
                         </tr>                                                
                     </tbody>
                     </table>
