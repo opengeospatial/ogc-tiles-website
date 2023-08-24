@@ -233,36 +233,13 @@ html(lang='en')
                             a.btn.btn-dark.btn-social.mx-2(href='https://emotional.byteroad.net/openapi?f=html' title='OpenAPI definition' target="_blank")
                                 i.fa.fa-code
 
-                    //- .col-lg-4
-                    //-     .team-member
-                    //-         img.mx-auto.rounded-circle(src='assets/img/os-ngd-api-features.png', alt='...')
-                    //-         h4 OS NGD API – Features
-                    //-         p.text-muted Powered by The OS Data Hub
-                    //-         p.text-muted Easy online access to the OS National Geographic Database, providing a rich and consistent information about the real world.
-                    //-         a.btn.btn-dark.btn-social.mx-2(href='https://osdatahub.os.uk/' title='Collection Resource' target="_blank")
-                    //-             i.fa.fa-link
-                    //-         a.btn.btn-dark.btn-social.mx-2(href='https://osngd.gitbook.io/osngd/accessing-os-ngd/access-the-os-ngd-api-features' title='API documentation' target="_blank")
-
-
-                    //- .col-lg-4
-                    //-     .team-member
-                    //-         img.mx-auto.rounded-circle(src='assets/img/wetlands.png', alt='...')
-                    //-         h4 Geographic Objects from the National Cartographic System of Spain
-                    //-         p.text-muted Powered by pygeoapi
-                    //-         p.text-muted Includes collections such as Hydrography, Transport Networks, CartoCiudad postal addresses and the Information System on Land Occupation of Spain 2014 (SIOSE).
-                    //-         a.btn.btn-dark.btn-social.mx-2(href='https://api-features.idee.es/collections?f=html&lang=en' title='Collections Resource' target="_blank")
-                    //-             i.fa.fa-link
-                    //-         a.btn.btn-dark.btn-social.mx-2(href='https://api-features.idee.es/openapi?f=html' title='OpenAPI definition' target="_blank")
-
-        section#implementations.page-section
+        section#getstarted.page-section.bg-light
             .container
                 .text-center
-                    h2.section-heading.text-uppercase Use it
+                    h2.section-heading.text-uppercase Get Started
 
-                    h3.section-subheading.text-muted Do you want to start using OGC API Features? Before starting to implement the spec, please take a look at the existing implementations. 
+                    h3.section-subheading.text-muted Do you want to start using OGC API - Tiles? Before starting to implement the spec, please take a look at the existing implementations. 
         
-
-
                     <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -316,34 +293,34 @@ html(lang='en')
                     </thead>
                     <tbody>
                         <tr>
-                        <th scope="row" rowspan="2" class="table-info">Python <i class="fab fa-python"></i></th>
-                        <td>OWSLib</td>
-                        <td title="Github repository"><a href="https://github.com/geopython/OWSLib"><i class="fab fa-github"></i></a></td>
-                        <td title="Code sample/Documentation"><a href="https://geopython.github.io/OWSLib/usage.html#ogc-api-features-1-0"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>                
-                        </tr>
-                        <tr>
+                        <th scope="row" rowspan="1" class="table-info">Python <i class="fab fa-python"></i></th>
                         <td>Pygdal</td>
                         <td title="Github repository"><a href="https://github.com/nextgis/pygdal"><i class="fab fa-github"></i></a></td>
                         <td colspan="2">Check <a href="https://gdal.org/drivers/vector/oapif.html">GDAL's documentation</a>.</td>          
                         </tr>                        
                         <tr>
-                        <th scope="row" class="table-info">JavaScript <i class="fab fa-js"></i></th>
-                        <td>ogcapi-js</td>
+                        <th scope="row" rowspan="2" class="table-info">JavaScript <i class="fab fa-js"></i></th>
+                        <td>OpenLayers</td>
                         <td title="Github repository"><a href="https://github.com/haoliangyu/ogcapi-js"><i class="fab fa-github"></i></a></td>
                         <td title="Tutorial/Example"><a href="https://haoliangyu.github.io/ogcapi-js/"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>                
                         </tr>
                         <tr>
-                        <th scope="row" class="table-info">C/C++</th>
+                        <td>LuciadRIA</td>
+                        <td title="Github repository"><a href="https://github.com/haoliangyu/ogcapi-js"><i class="fab fa-github"></i></a></td>
+                        <td title="Tutorial/Example"><a href="https://haoliangyu.github.io/ogcapi-js/"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>                
+                        </tr>
+                        <tr>
+                        <th scope="row" rowspan="2" class="table-info">C/C++</th>
                         <td>GDAL</td>
                         <td title="Github repository"><a href="https://github.com/OSGeo/gdal"><i class="fab fa-github"></i></a></td>
                         <td title="Tutorial/Example"><a href="https://gdal.org/drivers/vector/oapif.html"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>                
-                        </tr>                        
+                        </tr>
                         <tr>
-                        <th scope="row" class="table-info">Integration framework<i class="fa fa-wrench"></i> </th>
-                        <td>Apache Camel</td>
-                        <td title="Github repository"><a href="https://github.com/KaotoIO/step-extension-ogcapi-features-action"><i class="fab fa-github"></i></a><a href="https://github.com/apache/camel-kamelets/blob/main/kamelets/ogcapi-features-action.kamelet.yaml"><i class="fab fa-github"></i></a></td>
-                        <td title="Tutorial/Example"><a href="https://kaoto.io/portfolio/"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>                
-                        </tr>                        
+                        <td>GNOSIS SDK / Cartographer</td>
+                        <td title="Website"><a href="https://ecere.ca/gnosis/"><i class="fas fa-link"></i></a></td>
+                        <td title="Docker image"></td>
+                        <td title="Tutorial/Example"></td>                
+                        </tr>                                                
                     </tbody>
                     </table>
 
@@ -351,114 +328,22 @@ html(lang='en')
                         a(href='https://www.ogc.org/compliance' title='Compliance' target="_blank") compliant
                         | product.
 
-                    //- h3.section-subheading.text-muted An extensive list can be found
-                    //-     a(href='https://github.com/opengeospatial/ogcapi-features/tree/master/implementations' title='Implementations' target="_blank") here
-                    //-     |.
-
-                    //- span.fa-stack.fa-4x
-                    //-     a(href='https://github.com/opengeospatial/ogcapi-features/tree/master/implementations')
-                    //-         i.fas.fa-circle.fa-stack-2x.text-primary
-                    //-         i.fas.fa-rocket.fa-stack-1x.fa-inverse
-
-
-
         section#adopters.page-section
             .container
                 .text-center
-                    h2.section-heading.text-uppercase Who is behind OGC API Features?
+                    h2.section-heading.text-uppercase Who is behind OGC API - Tiles?
                 p.text-muted 
-                    | OGC API Features is developed through a member-driven consensus process, which creates royalty free, publicly available, open geospatial standards.
+                    | OGC API - Tiles is developed through a member-driven consensus process, which creates royalty free, publicly available, open geospatial standards.
                     | The
                     a(href="https://www.ogc.org/") Open Geospatial Consortium (OGC)
-                    | is the organisation which drives this process. It is supported by an active community of members, with involvement from a large range of organizations, as well as smaller ones. <a href="https://www.ogc.org/ogc/join/levels">Join OGC today!</a>
-
-                div.py-5
-                    .container
-                        .row.align-items-center
-                            .col-md-4.col-sm-6.my-4   
-                                a(href='https://www.interactive-instruments.de/en/')
-                                    img.img-fluid.img-brand.d-block.mx-auto(src='assets/img/logos/interactive-instruments.svg', alt='...')    
-                            .col-md-4.col-sm-6.my-4
-                                a(href='https://ecere.ca/"')
-                                    img.img-fluid.img-brand.d-block.mx-auto(src='assets/img/logos/ecere.svg', alt='...')
-                            .col-md-4.col-sm-6.my-4
-                                a(href='https://www.ordnancesurvey.co.uk/')
-                                    img.img-fluid.img-brand.d-block.mx-auto(src='assets/img/logos/os.svg', alt='...')                                  
-                            .col-md-4.col-sm-6.my-4
-                                a(href='https://natural-resources.canada.ca/home')
-                                    img.img-fluid.img-brand.d-block.mx-auto(src='assets/img/logos/nrcan.svg', alt='...')
-                            .col-md-4.col-sm-6.my-4
-                                a(href='https://www.esa.int/')
-                                    img.img-fluid.img-brand.d-block.mx-auto(src='assets/img/logos/esa.svg', alt='...')
-                            .col-md-4.col-sm-6.my-4
-                                a(href='https://www.cubic.com/')
-                                    img.img-fluid.img-brand.d-block.mx-auto(src='assets/img/logos/cubic.svg', alt='...')
-                            .col-md-4.col-sm-6.my-4
-                                a(href='https://hexagon.com/')
-                                    img.img-fluid.img-brand.d-block.mx-auto(src='assets/img/logos/hexagon.svg', alt='...')  
-                            .col-md-4.col-sm-6.my-4
-                                a(href='https://www.trimble.com/en')
-                                    img.img-fluid.img-brand.d-block.mx-auto(src='assets/img/logos/TrimbleR-Horiz-RGB-Blue.svg', alt='...')                                   
-                            .col-md-4.col-sm-6.my-4   
-                                a(href='https://i-bitz.co.th/')
-                                    img.img-fluid.img-brand.d-block.mx-auto(src='assets/img/logos/i-bitz_logo.svg', alt='...')                                      
-                            .col-md-4.col-sm-.my-4
-                                a(href='https://www.maxar.com/')
-                                    img.img-fluid.img-brand.d-block.mx-auto(src='assets/img/logos/maxar_gold_logo_rgb.svg',  alt='...')
-                            .col-md-4.col-sm-6.my-4
-                                a(href='https://www.microsoft.com/')
-                                    img.img-fluid.img-brand.d-block.mx-auto(src='assets/img/logos/microsoft2.svg', alt='...')
-
-                p.text-muted.small 
-                    | The logos above are a small subset of all OGC members.
-                    | They are either strategic/principal members, and/or organisations who implement products certified for OGC API Features.
-
-
-        // Get started
-        section#getstarted.page-section.bg-light
-            .container
-                .text-center
-                    h2.section-heading.text-uppercase Get Started
-                    h3.section-subheading.text-muted Here is something to get you started.
-
-
-                ul.timeline
-                    li
-                        .timeline-image
-                            a(href='http://opengeospatial.github.io/e-learning/ogcapi-features/text/basic-index.html' title='E-learning' target="_blank")
-                                img.rounded-circle.img-fluid(src='assets/img/about/elearning.jpeg', alt='...')
-                        .timeline-panel
-                            .timeline-heading
-                                h4.subheading Complete an online training
-                            .timeline-body
-                                p.text-muted
-                                    | If you are familiar with web services and APIs, and want to have an overview of the OGC API - Features standard, this training is for you.
-                    li.timeline-inverted
-                        .timeline-image
-                            a(href='https://dev.to/doublebyte/sharing-geospatial-data-with-ogc-api-pygeoapi-and-mongodb-4lo7' title='E-learning' target="_blank")
-                                img.rounded-circle.img-fluid(src='assets/img/about/sawcer.jpeg', alt='...')
-                        .timeline-panel
-                            .timeline-heading
-                                h4.subheading Follow a tutorial
-                            .timeline-body
-                                p.text-muted
-                                    | Implement a complete pipeline to make your data available with OGC API - Features, using a stack of free and open source software.
-                                    | A video version is available 
-                                    a(href="https://dev.to/doublebyte/how-to-share-geospatial-data-on-the-web-54b7") here.
-
-                            //a.btn.btn-dark.btn-social.mx-2(href='http://opengeospatial.github.io/e-learning/ogcapi-features/text/basic-index.html' title='E-learning' target="_blank")
-                                i.fa.fa-link
-                    li.timeline-inverted
-                     a(href='#getinvolved' title='Get Involved')
-                        .timeline-image
-                            h4
-                                | Get
-                                br
-                                | Involved!
+                    | is the organisation which drives this process. It is supported by an active community of members, with involvement from a large range of organizations, as well as smaller ones.
+                    | If you want to explore other OGC standards, check out the 
+                    a(href='https://developer.ogc.org/' title='Compliance' target="_blank") OGC developer website
+                    | .
 
 
         // Get involved
-        section#getinvolved.page-section
+        section#getinvolved.page-section.bg-light
              .container
                 .text-center
                     h2.section-heading.text-uppercase Get Involved
