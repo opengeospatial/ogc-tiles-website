@@ -46,7 +46,7 @@ html(lang='en')
                         li.nav-item
                             a.nav-link(href='#getinvolved') Get Involved
 
-                a(href='https://github.com/opengeospatial/ogc-tiles-website')
+                a(href='https://github.com/opengeospatial/ogc-tiles-website' target="_blank")
                     img(style='position: absolute; top: 0; right: 0; border: 0;' src='https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png' alt='Fork me on GitHub')
 
 
@@ -68,7 +68,7 @@ html(lang='en')
                     .col-md-6
                         p.text-muted The first web maps were provided by services that would generate map images on demand.  
                             | The Web Map Service (e.g.
-                            a(href='https://en.wikipedia.org/wiki/Web_Map_Service') WMS
+                            a(href='https://en.wikipedia.org/wiki/Web_Map_Service' target="_blank") WMS
                             | ), part of the first generation of OGC standards, is an example of this. 
                         p.text-muted In the early 2000's, Google has paved the way for a more efficient way of serving maps, by pre-rendering images (e.g.: tiles) and organising them into pyramids of regular grids (e.g.: tilesets).
                             | The conceptual model that allows clients to retrieve tiles in this pyramid is called a tiling scheme. 
@@ -102,20 +102,20 @@ html(lang='en')
                     .col-md-6
                         p.text-muted
                             | The 
-                            a(href='https://docs.ogc.org/is/20-057/20-057.html') OGC API - Tiles 
+                            a(href='https://docs.ogc.org/is/20-057/20-057.html' target="_blank") OGC API - Tiles 
                             | standard describes how mapping clients (e.g: web pages, desktop applications) can get information about tilesets and how to request the tiled data itself. 
                             | It basically adds some formality to what people have been doing for years with XYZ tilesets, while adding support for more complex use cases.
                         p.text-muted As other OGC APIs, the standard is organised in a serious of 
-                            a(href='https://blocks.ogc.org/') building blocks
+                            a(href='https://blocks.ogc.org/' target="_blank") building blocks
                             | , which are mapped to conformance classes. 
                             | One may choose to conform to one or more conformance classes, according to the complexity of the use case and the aimed degree of interoperability.
                         p.text-muted
                             | The core conformance class boils down to three simple requirements ( 
-                            a(href='https://docs.ogc.org/is/20-057/20-057.html#req_core_tc-op') 1
+                            a(href='https://docs.ogc.org/is/20-057/20-057.html#req_core_tc-op' target="_blank") 1
                             |,
-                            a(href='https://docs.ogc.org/is/20-057/20-057.html#req_core_core_tc-success') 5
+                            a(href='https://docs.ogc.org/is/20-057/20-057.html#req_core_core_tc-success' target="_blank") 5
                             | and 
-                            a(href='https://docs.ogc.org/is/20-057/20-057.html#req_core_core_tc-error') 6
+                            a(href='https://docs.ogc.org/is/20-057/20-057.html#req_core_core_tc-error' target="_blank") 6
                             | ), which capture what most web map applications are already doing:
                         .text-left
                             ul
@@ -146,9 +146,9 @@ html(lang='en')
                         p.text-muted
                             | If your tileset has some custom characteristics, you may want clients to know about it, by implementing the Tileset conformance class.
                             | The information about tilesets - 
-                            a(href="https://docs.ogc.org/is/17-083r4/17-083r4.html#toc20") TileSet metadata 
+                            a(href="https://docs.ogc.org/is/17-083r4/17-083r4.html#toc20" target="_blank") TileSet metadata 
                             | - is drawn from another standard: the
-                            a(href="https://docs.ogc.org/is/17-083r4/17-083r4.html") OGC Two Dimensional Tile Matrix Set and Tile Set Metadata
+                            a(href="https://docs.ogc.org/is/17-083r4/17-083r4.html" target="_blank") OGC Two Dimensional Tile Matrix Set and Tile Set Metadata
                             | A tileset that does not cover the entire world, provides a limited set of zoom levels or uses an alternative projection are use cases for providing tileset metadata.
 
                         p.text-muted
@@ -157,9 +157,9 @@ html(lang='en')
 
                         p.text-muted
                             | If you want to follow the development of the OGC API - Tiles, please refer to the 
-                            a(href="https://github.com/opengeospatial/ogcapi-tiles") GitHub repository. 
+                            a(href="https://github.com/opengeospatial/ogcapi-tiles" target="_blank") GitHub repository. 
                             | If you want to study the API, you can check out the 
-                            a(href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/opengeospatial/ogcapi-tiles/master/openapi/ogcapi-tiles-1.bundled.json") swagger page
+                            a(href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/opengeospatial/ogcapi-tiles/master/openapi/ogcapi-tiles-1.bundled.json" target="_blank") swagger page
                             | .
 
                 .row
@@ -254,36 +254,36 @@ html(lang='en')
                         <tr>
                         <th scope="row" rowspan="1" class="table-info">Java <i class="fab fa-java"></i></th>
                         <td>Ldproxy<sup>*</sup></td>
-                        <td title="Github repository"><a href="https://github.com/interactive-instruments/ldproxy"><i class="fab fa-github"></i></a></td>
-                        <td title="Docker image"><a href="https://hub.docker.com/r/iide/ldproxy/"><i class="fab fa-docker"></i></a></td>
-                        <td title="Tutorial/Example"><a href="https://github.com/interactive-instruments/ldproxy/tree/master/demo/vineyards"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>
+                        <td title="Github repository"><a href="https://github.com/interactive-instruments/ldproxy" target="_blank"><i class="fab fa-github"></i></a></td>
+                        <td title="Docker image"><a href="https://hub.docker.com/r/iide/ldproxy/" target="_blank"><i class="fab fa-docker"></i></a></td>
+                        <td title="Tutorial/Example"><a href="https://github.com/interactive-instruments/ldproxy/tree/master/demo/vineyards" target="_blank"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>
                         </tr>                        
                         <tr>
                         <th scope="row" rowspan="2" class="table-info">Python <i class="fab fa-python"></i></th>
                         <td>pygeoapi<sup>*</sup></td>
-                        <td title="Github repository"><a href="https://github.com/geopython/pygeoapi"><i class="fab fa-github"></i></a></td>
-                        <td title="Docker image"><a href="https://hub.docker.com/r/geopython/pygeoapi"><i class="fab fa-docker"></i></a></td>
-                        <td title="Tutorial/Example"><a href="https://dive.pygeoapi.io/"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>                
+                        <td title="Github repository"><a href="https://github.com/geopython/pygeoapi" target="_blank"><i class="fab fa-github"></i></a></td>
+                        <td title="Docker image"><a href="https://hub.docker.com/r/geopython/pygeoapi" target="_blank"><i class="fab fa-docker"></i></a></td>
+                        <td title="Tutorial/Example"><a href="https://dive.pygeoapi.io/" target="_blank"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>                
                         </tr>
                         <tr>
                         <td>TiPg</td>
-                        <td title="Github repository"><a href="https://github.com/developmentseed/tipg"><i class="fab fa-github"></i></a></td>
+                        <td title="Github repository"><a href="https://github.com/developmentseed/tipg" target="_blank"><i class="fab fa-github"></i></a></td>
                         <td title="Docker image"></td>
-                        <td title="Tutorial/Example"><a href="https://developmentseed.org/tipg/"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>                
+                        <td title="Tutorial/Example"><a href="https://developmentseed.org/tipg/" target="_blank"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>                
                         </tr>
                         <tr>
                         <th scope="row" rowspan="1" class="table-info">C/C++</th>
                         <td>GNOSIS Map Server<sup>*</sup></td>
-                        <td title="Website"><a href="https://ecere.ca/gnosis/"><i class="fas fa-link"></i></a></td>
+                        <td title="Website"><a href="https://ecere.ca/gnosis/" target="_blank"><i class="fas fa-link"></i></a></td>
                         <td title="Docker image"></td>
                         <td title="Tutorial/Example"></td>                
                         </tr>
                         <tr>
                         <th scope="row" rowspan="1" class="table-info">Scala</th>
                         <td>franklin</td>
-                        <td title="Github repository"><a href="https://github.com/azavea/franklin"><i class="fab fa-github"></i></a></td>
+                        <td title="Github repository"><a href="https://github.com/azavea/franklin" target="_blank"><i class="fab fa-github"></i></a></td>
                         <td title="Docker image"></td>
-                        <td title="Tutorial/Example"><a href="https://azavea.github.io/franklin/docs/introduction"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>
+                        <td title="Tutorial/Example"><a href="https://azavea.github.io/franklin/docs/introduction" target="_blank"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>
                         </tr>                        
                     </tbody>                        
                     </table>
@@ -299,32 +299,32 @@ html(lang='en')
                         <tr>
                         <th scope="row" rowspan="1" class="table-info">Python <i class="fab fa-python"></i></th>
                         <td>Pygdal</td>
-                        <td title="Github repository"><a href="https://github.com/nextgis/pygdal"><i class="fab fa-github"></i></a></td>
-                        <td colspan="2">Check <a href="https://gdal.org/drivers/vector/oapif.html">GDAL's documentation</a>.</td>          
+                        <td title="Github repository"><a href="https://github.com/nextgis/pygdal" target="_blank"><i class="fab fa-github"></i></a></td>
+                        <td colspan="2">Check <a href="https://gdal.org/drivers/vector/oapif.html" target="_blank">GDAL's documentation</a>.</td>          
                         </tr>                        
                         <tr>
                         <th scope="row" rowspan="2" class="table-info">JavaScript <i class="fab fa-js"></i></th>
                         <td>OpenLayers</td>
-                        <td title="Github repository"><a href="https://github.com/openlayers/openlayers"><i class="fab fa-github"></i></a></td>
+                        <td title="Github repository"><a href="https://github.com/openlayers/openlayers" target="_blank"><i class="fab fa-github"></i></a></td>
                         <td colspan="2" title="Tutorial/Example">
-                            <a href="https://openlayers.org/en/latest/examples/ogc-map-tiles.html"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a>,
-                            <a href="https://openlayers.org/en/latest/examples/ogc-vector-tiles.html"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a>
+                            <a href="https://openlayers.org/en/latest/examples/ogc-map-tiles.html" target="_blank"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a>,
+                            <a href="https://openlayers.org/en/latest/examples/ogc-vector-tiles.html" target="_blank"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a>
                         </td>                
                         </tr>
                         <tr>
                         <td>LuciadRIA</td>
-                        <td title="Website"><a href="https://hexagon.com/products/luciadria"><i class="fas fa-link"></i></a></td>
+                        <td title="Website"><a href="https://hexagon.com/products/luciadria" target="_blank"><i class="fas fa-link"></i></a></td>
                         <td colspan="2" title="Tutorial/Example"></td>                
                         </tr>
                         <tr>
                         <th scope="row" rowspan="2" class="table-info">C/C++</th>
                         <td>GDAL</td>
-                        <td title="Github repository"><a href="https://github.com/OSGeo/gdal"><i class="fab fa-github"></i></a></td>
-                        <td colspan="2" title="Tutorial/Example"><a href="https://gdal.org/drivers/vector/oapif.html"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>                
+                        <td title="Github repository"><a href="https://github.com/OSGeo/gdal" target="_blank"><i class="fab fa-github"></i></a></td>
+                        <td colspan="2" title="Tutorial/Example"><a href="https://gdal.org/drivers/vector/oapif.html" target="_blank"><i class="fas fa-graduation-cap"></i>/<i class="fas fa-code"></i></a></td>                
                         </tr>
                         <tr>
                         <td>GNOSIS SDK / Cartographer</td>
-                        <td title="Website"><a href="https://ecere.ca/gnosis/"><i class="fas fa-link"></i></a></td>
+                        <td title="Website"><a href="https://ecere.ca/gnosis/" target="_blank"><i class="fas fa-link"></i></a></td>
                         <td colspan="2" title="Tutorial/Example"></td>                
                         </tr>                                                
                     </tbody>
@@ -341,7 +341,7 @@ html(lang='en')
                 p.text-muted 
                     | OGC API - Tiles is developed through a member-driven consensus process, which creates royalty free, publicly available, open geospatial standards.
                     | The
-                    a(href="https://www.ogc.org/") Open Geospatial Consortium (OGC)
+                    a(href="https://www.ogc.org/" target="_blank") Open Geospatial Consortium (OGC)
                     | is the organisation which drives this process. It is supported by an active community of members, with involvement from a large range of organizations, as well as smaller ones.
                     | If you want to explore other OGC standards, check out the 
                     a(href='https://developer.ogc.org/' title='Compliance' target="_blank") OGC developer website
@@ -357,7 +357,7 @@ html(lang='en')
                 .row.text-center
                     .col-md-6
                         span.fa-stack.fa-4x
-                            a(href='https://discord.gg/SpMckEmXAX' title='Discord')                        
+                            a(href='https://discord.gg/SpMckEmXAX' title='Discord' target="_blank")                        
                                 i.fas.fa-circle.fa-stack-2x.text-primary
                                 i.fab.fa-discord.fa-stack-1x.fa-inverse
                         h4.my-3 Discord
@@ -365,7 +365,7 @@ html(lang='en')
                             | Chat with other OGC API Tiles users in the OGC Community channel.
                     .col-md-6
                         span.fa-stack.fa-4x
-                            a(href='https://github.com/opengeospatial/ogcapi-tiles' title='Github')
+                            a(href='https://github.com/opengeospatial/ogcapi-tiles' title='Github' target="_blank")
                                 i.fas.fa-circle.fa-stack-2x.text-primary
                                 i.fab.fa-github.fa-stack-1x.fa-inverse
                         h4.my-3 GitHub
@@ -380,13 +380,13 @@ html(lang='en')
                     .col-lg-4.text-lg-start
                         | Copyright &copy; 2023. Open Geospatial Consortium all rights reserved
                     .col-lg-4.my-3.my-lg-0
-                        a.btn.btn-dark.btn-social.mx-2(href='https://twitter.com/opengeospatial/')
+                        a.btn.btn-dark.btn-social.mx-2(href='https://twitter.com/opengeospatial/' target="_blank")
                             i.fab.fa-twitter
-                        a.btn.btn-dark.btn-social.mx-2(href='https://www.youtube.com/user/ogcvideo')
+                        a.btn.btn-dark.btn-social.mx-2(href='https://www.youtube.com/user/ogcvideo' target="_blank")
                             i.fab.fa-youtube
                         //- a.btn.btn-dark.btn-social.mx-2(href='#!')
                         //-     i.fab.fa-telegram-plane
-                        a.btn.btn-dark.btn-social.mx-2(href='https://www.linkedin.com/company/open-geospatial-consortium')
+                        a.btn.btn-dark.btn-social.mx-2(href='https://www.linkedin.com/company/open-geospatial-consortium' target="_blank")
                             i.fab.fa-linkedin-in
                     .col-lg-4.text-lg-end
                         a.link-dark.text-decoration-none.me-3(data-bs-toggle='modal', data-bs-target='#portfolioModal1') Privacy Policy
