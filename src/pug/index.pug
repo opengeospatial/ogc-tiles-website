@@ -23,6 +23,7 @@ html(lang='en')
         // Core theme CSS (includes Bootstrap)
         link(href='css/styles.css', rel='stylesheet')
 
+
     body#page-top
 
         // Navigation
@@ -36,15 +37,23 @@ html(lang='en')
                 #navbarResponsive.collapse.navbar-collapse
                     ul.navbar-nav.text-uppercase.ms-auto.py-4.py-lg-0
                         li.nav-item
-                            a.nav-link(href='#background') Background
+                            strong
+                                a.nav-link(href='#what') What is it?
                         li.nav-item
-                            a.nav-link(href='#standard') Standard
+                            strong
+                                a.nav-link(href='#why') Why Tiles?
                         li.nav-item
-                            a.nav-link(href='#inaction') In Action
+                            strong
+                                a.nav-link(href='#how') How does it work?
                         li.nav-item
-                            a.nav-link(href='#getstarted') Get Started
+                            strong
+                                a.nav-link(href='#inaction') In Action
                         li.nav-item
-                            a.nav-link(href='#getinvolved') Get Involved
+                            strong
+                                a.nav-link(href='#getstarted') Get Started
+                        li.nav-item
+                            strong
+                                a.nav-link(href='#getinvolved') Get Involved
 
                 a(href='https://github.com/opengeospatial/ogc-tiles-website' target="_blank")
                     img(style='position: absolute; top: 0; right: 0; border: 0;' src='https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png' alt='Fork me on GitHub')
@@ -55,131 +64,81 @@ html(lang='en')
             .container
                 .masthead-heading.text-uppercase OGC API - Tiles
                 .masthead-subheading Enabling responsive interactive maps
-                a.btn.btn-primary.btn-xl.text-uppercase(href='#background') Tell Me More
-                a.btn.btn-primary.btn-xl.text-uppercase(href='#standard') Get Started
+                a.btn.btn-primary.btn-xl.text-uppercase(href='#what') Tell Me More
+                a.btn.btn-primary.btn-xl.text-uppercase(href='#getstarted') Get Started
 
-        // Background
-        section#background.page-section
+        // About
+        section#what.page-section
             .container
                 .text-center
-                    h2.section-heading.text-uppercase How Tiled Maps work
-                    //- h3.section-subheading.text-muted Main reasons for using OGC API Features.
-                .row.text-justified
-                    .col-md-6
-                        p.text-muted The first web maps were provided by services that would generate map images on demand.  
-                            | The Web Map Service (e.g.
-                            a(href='https://en.wikipedia.org/wiki/Web_Map_Service' target="_blank") WMS
-                            | ), part of the first generation of OGC standards, is an example of this. 
-                        p.text-muted In the early 2000's, Google has paved the way for a more efficient way of serving maps, by pre-rendering images (e.g.: tiles) and organising them into pyramids of regular grids (e.g.: tilesets).
-                            | The conceptual model that allows clients to retrieve tiles in this pyramid is called a tiling scheme. 
-                            | In a XYZ scheme, which is what we see in most of the web map services today, each tile can be identified by three parameters: zoom level (
-                            code Z
-                            | ), column (
-                            code X
-                            | ), and row (
-                            code Y
-                            | )
-                        p.text-muted In an XYZ tileset, the top tile (0/0/0) covers the minimum zoom level (generally the entire world) and subsequent levels contain four tiles, for each one of the tiles above until we reach the maximum zoom level (e.g.: generally around 18-25). The url template to request a tile is usually something like: 
-                            code https://somehost.com/tiles/{z}/{x}/{y}.png
-                            | , where 
-                            code {z} 
-                            | is a placeholder for the zoom level, 
-                            code {x} 
-                            | for the column number, and 
-                            code {y} 
-                            |for the row number.
-                        p.text-muted Things like the projection used to render the tiles, the available zoom levels and even the url template may vary from tileset to tileset. The fact that there was no standard way of advertising this information was responsible for degrading the interoperability between web map servers and clients. 
-                            | In other words, if one wrote a mapping client there would be no guarantee that they would be able to consume tiles from different servers and vice-versa. 
-                    .col-md-6
-                        img(src='assets/img/tileset.png', title='Source: https://developers.planet.com/blog/2023/May/12/ogc-made-easy-tiling-spec/', alt='..')
+                    h2.section-heading.text-uppercase A REST-ful JSON upgrade to WMTS
+                .row.justify-content-center
+                    .col-6
+                        p.text-muted 
+                            | Unlike
+                            a(href="https://en.wikipedia.org/wiki/Web_Map_Tile_Service" target="_blank") WMTS
+                            |, It uses JSON instead of XML and it is 
+                            a(href="https://blocks.ogc.org/#background" target="_blank") modular
+                            |, which means you can easily integrate it into existing applications. Like the
+                            a(href="https://docs.mapbox.com/help/glossary/tilejson/" target="_blank") TileJSON
+                            | specification, it provides a way to describe tilesets available on a server, but it supports  
+                            | more use cases, like serving data which is not projected in Google Mercator. 
+                            //- | Unlike that and other specifications, it is an approved standard, developed by an 
+                            //- a(href="#ogc" target="_blank") independent body.
+                            //- a(href='more.html' title='Website' target="_blank") test
+                            //- | <div>
+                            //- |   <embed type="text/html" src="https://emotional.byteroad.net/collections/hex350_grid_cardio_1920/tiles" width="100%" height="600">
+                            //- | </div>
 
-        // Standard
-        section#standard.page-section.bg-light
+        // Why
+        section#why.page-section.bg-light
             .container
                 .text-center
-                    h2.section-heading.text-uppercase Standard
-                .row.text-justified
-                    .col-md-6
+                    h2.section-heading.text-uppercase Why?
+                    h3.section-subheading.text-muted Main reasons for using OGC API - Tiles
+                .row.text-center
+                    .col-md-4
+                        span.fa-stack.fa-4x
+                            i.fas.fa-circle.fa-stack-2x.text-primary
+                            i.fas.fa-plug.fa-stack-1x.fa-inverse
+                        h4.my-3 Interoperable
                         p.text-muted
-                            | The 
-                            a(href='https://docs.ogc.org/is/20-057/20-057.html' target="_blank") OGC API - Tiles 
-                            | standard describes how mapping clients (e.g: web pages, desktop applications) can get information about tilesets and how to request the tiled data itself. 
-                            | It basically adds some formality to what people have been doing for years with XYZ tilesets, while adding support for more complex use cases.
-                        p.text-muted As other OGC APIs, the standard is organised in a serious of 
-                            a(href='https://blocks.ogc.org/' target="_blank") building blocks
-                            | , which are mapped to conformance classes. 
-                            | One may choose to conform to one or more conformance classes, according to the complexity of the use case and the aimed degree of interoperability.
+                            | Ensure that your application can read data from existing and new sources without changing how you communicate with them. Ensure that the data you share can be accessed by different clients, without having to share details of your implementation.
+                    .col-md-4
+                        span.fa-stack.fa-4x
+                            i.fas.fa-circle.fa-stack-2x.text-primary
+                            i.fas.fa-laptop-code.fa-stack-1x.fa-inverse
+                        h4.my-3 Based on Best Practices
                         p.text-muted
-                            | The core conformance class boils down to three simple requirements ( 
-                            a(href='https://docs.ogc.org/is/20-057/20-057.html#req_core_tc-op' target="_blank") 1
-                            |,
-                            a(href='https://docs.ogc.org/is/20-057/20-057.html#req_core_core_tc-success' target="_blank") 5
-                            | and 
-                            a(href='https://docs.ogc.org/is/20-057/20-057.html#req_core_core_tc-error' target="_blank") 6
-                            | ), which capture what most web map applications are already doing:
-                        .text-left
-                            ul
-                                li
-                                    p.text-muted Tiles must be available using a URL following a template like:
-                                        code https://somehost.com/tiles/{z}/{x}/{y}.png
-                                li
-                                    p.text-muted Successful responses must return an http response with a 
-                                        code 200 
-                                        | status code.
-                                li
-                                    p.text-muted If the requested tile is out-of range, a 
-                                        code 400 
-                                        | or 
-                                        code 404
-                                        | status codes should be returned (
-                                        code 204
-                                        | , in the case of empty tiles).
-                    .col-md-6
+                            | This API is based on the technologies and vocabularies that make up the web today, such as REST, OpenAPI, JSON and HTML. This should ensure a smooth learning curve for any web developer, even if they are not familiar with GIS.
+                    .col-md-4
+                        span.fa-stack.fa-4x
+                            i.fas.fa-circle.fa-stack-2x.text-primary
+                            i.fas.fa-layer-group.fa-stack-1x.fa-inverse
+                        h4.my-3 Supported on Existing Products
                         p.text-muted
-                            | If you choose to also confom to 
-                            a(href='https://docs.ogc.org/DRAFTS/19-072.html') “OGC API - Common - Part 1: Core”
-                            | , then the {z}, {x} and {y} parameters need to be renamed to {tileMatrix}, {tileCol} and {tileRow}.
-                            | A server that conforms to all these requirements, should advertise it in a specific 
-                            code /conformance
-                            | endpoint.
+                            | You can start using the OGC API - Tiles standard today, by tapping into one of the 
+                            a(href='#getstarted') existing server or client implementations.
 
-                        p.text-muted
-                            | If your tileset has some custom characteristics, you may want clients to know about it, by implementing the Tileset conformance class.
-                            | The information about tilesets - 
-                            a(href="https://docs.ogc.org/is/17-083r4/17-083r4.html#toc20" target="_blank") TileSet metadata 
-                            | - is drawn from another standard: the
-                            a(href="https://docs.ogc.org/is/17-083r4/17-083r4.html" target="_blank") OGC Two Dimensional Tile Matrix Set and Tile Set Metadata
-                            | A tileset that does not cover the entire world, provides a limited set of zoom levels or uses an alternative projection are use cases for providing tileset metadata.
 
-                        p.text-muted
-                            | Finally, the Tileset List Conformance Class provides a list of tileSets, described by a subset of the tileSet metadata and links to access those tileSets.
-                            | It may be useful for servers that want to advertise multiple tileSets.
-
-                        p.text-muted
-                            | If you want to follow the development of the OGC API - Tiles, please refer to the 
-                            a(href="https://github.com/opengeospatial/ogcapi-tiles" target="_blank") GitHub repository. 
-                            | If you want to study the API, you can check out the 
-                            a(href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/opengeospatial/ogcapi-tiles/master/openapi/ogcapi-tiles-1.bundled.json" target="_blank") swagger page
-                            | .
-
-                .row
-                    .col-sm-3
-                        p.text-muted
-                            | The diagram on the left, shows the basic steps a client should follow to access a tile (“OGC API - Common - Part 1: Core”).
-                            | It starts by retrieving the list of collections available on the server and selecting one, in this example, "lakes". 
-                            | Then it retrieves the list of available TileMatrixSets, e.g.: the sets of tiles pre-rendered in a given coordinate reference system, and selects one.
-                            | Finally, it requests a specific tile, using the 
-                            code x,y,z 
-                            | indexes. 
-                    .col-sm-9
-                        img(src='assets/img/ogc-api-tiles.png', width="100%" title='OGC API - Tiles: Access workflow', alt='..')
-                .row
-                        p.text-muted
-                            | In this example we are requesting a vector tile, which is indicated by the file extension. The available formats are retrieved through content negotiation. Assuming a local server, the url path would look like: 
-                            code http://localhost/collections/lakes/tiles/WorldCRS84Quad/0/0/0.pbf
+        // How
+        section#how.page-section
+            .container
+                .text-center
+                    h2.section-heading.text-uppercase How does it work?
+                .row.justify-content-center
+                    .col-6
+                        p.text-muted 
+                            | The OGC API - Tiles standard describes how mapping clients (e.g: web pages, desktop applications) can get information about tilesets and how to request the tiled data itself. 
+                            | It builds on the 
+                            a(href="background.html" target="_blank") legacy of tiled maps
+                            | , by adding some formality to what people have been doing for years with XYZ tilesets, while adding support for more complex use cases.
+                            | As other OGC APIs, the standard is organised in a serious of building blocks , which are mapped to conformance classes. One may choose to conform to one or more conformance classes, according to the complexity of the use case and the aimed degree of interoperability.
+                            br
+                            a(href="standard.html" target="_blank") Learn more                            
 
         // In action
-        section#inaction.page-section
+        section#inaction.page-section.bg-light
             .container
                 .text-center
                     h2.section-heading.text-uppercase See it In Action
@@ -262,7 +221,7 @@ html(lang='en')
                                 i.fa.fa-code
 
 
-        section#getstarted.page-section.bg-light
+        section#getstarted.page-section
             .container
                 .text-center
                     h2.section-heading.text-uppercase Get Started
@@ -358,8 +317,8 @@ html(lang='en')
                     //- h3.section-subheading.text-muted <sup>*</sup> Certified 
                     //-     a(href='https://www.ogc.org/compliance' title='Compliance' target="_blank") compliant
                     //-     | product.
-
-        section#adopters.page-section
+            
+        section#ogc.page-section.bg-light
             .container
                 .text-center
                     h2.section-heading.text-uppercase Who is behind OGC API - Tiles?
@@ -374,7 +333,7 @@ html(lang='en')
 
 
         // Get involved
-        section#getinvolved.page-section.bg-light
+        section#getinvolved.page-section
              .container
                 .text-center
                     h2.section-heading.text-uppercase Get Involved
