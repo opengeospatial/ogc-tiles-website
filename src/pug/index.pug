@@ -63,7 +63,7 @@ html(lang='en')
         header.masthead
             .container
                 .masthead-heading.text-uppercase OGC API - Tiles
-                .masthead-subheading Enabling responsive interactive maps
+                .masthead-subheading A REST-ful JSON upgrade to WMTS
                 a.btn.btn-primary.btn-xl.text-uppercase(href='#what') Tell Me More
                 a.btn.btn-primary.btn-xl.text-uppercase(href='#getstarted') Get Started
 
@@ -71,18 +71,17 @@ html(lang='en')
         section#what.page-section
             .container
                 .text-center
-                    h2.section-heading.text-uppercase A REST-ful JSON upgrade to WMTS
+                    h2.section-heading.text-uppercase Interoperable XYZ Maps
                 .row.justify-content-center
                     .col-6
                         p.text-muted 
-                            | Unlike
-                            a(href="https://en.wikipedia.org/wiki/Web_Map_Tile_Service" target="_blank") WMTS
-                            |, It uses JSON instead of XML and it is 
-                            a(href="https://blocks.ogc.org/#background" target="_blank") modular
-                            |, which means you can easily integrate it into existing applications. Like the
-                            a(href="https://docs.mapbox.com/help/glossary/tilejson/" target="_blank") TileJSON
-                            | specification, it provides a way to describe tilesets available on a server, but it supports  
-                            | more use cases, like serving data which is not projected in Google Mercator (see map bellow). 
+                            The OGC API - Tiles standard 
+                            | builds on the 
+                            a(href="background.html" target="_blank") legacy of tiled maps
+                            | , by adding some formality to what people have been doing for years with XYZ tilesets, 
+                            | while providing some metadata that helps clients to do a better job at creating maps. 
+                            | This includes basic information like a title or description, but also the available zoom levels, maximum x and y coordinates and 
+                            | even a custom projection.
                 //- | <div><embed type="text/html" src="https://ogcincubator.github.io/ogcapi-tiles-map/" width="100%" height="600"></div>
                 | <iframe scrolling="yes" width="100%" height="600" src="https://ogcincubator.github.io/ogcapi-tiles-map/"></iframe>
 
@@ -130,10 +129,17 @@ html(lang='en')
                     .col-6
                         p.text-muted 
                             | The OGC API - Tiles standard describes how mapping clients (e.g: web pages, desktop applications) can get information about tilesets and how to request the tiled data itself. 
-                            | It builds on the 
-                            a(href="background.html" target="_blank") legacy of tiled maps
-                            | , by adding some formality to what people have been doing for years with XYZ tilesets, while adding support for more complex use cases.
-                            | As other OGC APIs, the standard is organised in a serious of building blocks , which are mapped to conformance classes. One may choose to conform to one or more conformance classes, according to the complexity of the use case and the aimed degree of interoperability.
+                            | Like the
+                            a(href="https://docs.mapbox.com/help/glossary/tilejson/" target="_blank") TileJSON
+                            | specification, it provides a way to describe tilesets available on a server, but it supports  
+                            | more use cases, like serving data which is not projected in Google Mercator.
+                            | Unlike
+                            a(href="https://en.wikipedia.org/wiki/Web_Map_Tile_Service" target="_blank") WMTS
+                            |, It uses JSON instead of XML and it is organized in a series of
+                            a(href="https://blocks.ogc.org" target="_blank") building blocks 
+                            | that can be easily integrated into other applications.
+                            | These building blocks are mapped to conformance classes. 
+                            | One may choose to conform to one or more conformance classes, according to the complexity of the use case and the aimed degree of interoperability.
                             br
                             a(href="standard.html" target="_blank") Learn more                            
 
