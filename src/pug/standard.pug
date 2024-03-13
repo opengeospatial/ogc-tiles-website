@@ -39,7 +39,7 @@ html(lang='en')
                 .row.text-justified
                     .col-md-6
                         p.text-muted
-                            | The core conformance class boils down to three simple requirements ( 
+                            | The core requirements class boils down to three simple requirements ( 
                             a(href='https://docs.ogc.org/is/20-057/20-057.html#req_core_tc-op' target="_blank") 1
                             |,
                             a(href='https://docs.ogc.org/is/20-057/20-057.html#req_core_core_tc-success' target="_blank") 5
@@ -49,7 +49,7 @@ html(lang='en')
                         .text-left
                             ul
                                 li
-                                    p.text-muted Tiles must be available using a URL following a template like:
+                                    p.text-muted Tiles must be available using a URL following a template such as:
                                         code https://somehost.com/tiles/{z}/{x}/{y}.png
                                 li
                                     p.text-muted Successful responses must return an http response with a 
@@ -65,29 +65,29 @@ html(lang='en')
                                         | , in the case of empty tiles).
                     .col-md-6
                         p.text-muted
-                            | If you choose to also confom to 
+                            | If you choose to also confom to the 
                             a(href='https://docs.ogc.org/DRAFTS/19-072.html') “OGC API - Common - Part 1: Core”
-                            | , then the {z}, {x} and {y} parameters need to be renamed to {tileMatrix}, {tileCol} and {tileRow}.
+                            | Standard, then the {z}, {x} and {y} parameters need to be renamed to {tileMatrix}, {tileCol} and {tileRow}.
                             | A server that conforms to all these requirements, should advertise it in a specific 
                             code /conformance
                             | endpoint.
 
                         p.text-muted
-                            | If your tileset has some custom characteristics, you may want clients to know about it, by implementing the Tileset conformance class.
+                            | If your tileset has some custom characteristics, you may want clients to know about these characteristics, by implementing the Tileset conformance class.
                             | The information about tilesets - 
                             a(href="https://docs.ogc.org/is/17-083r4/17-083r4.html#toc20" target="_blank") TileSet metadata 
-                            | - is drawn from another standard: the
+                            | - is drawn from another OGC Standard: the
                             a(href="https://docs.ogc.org/is/17-083r4/17-083r4.html" target="_blank") OGC Two Dimensional Tile Matrix Set and Tile Set Metadata
-                            | A tileset that does not cover the entire world, provides a limited set of zoom levels or uses an alternative projection are use cases for providing tileset metadata.
+                            | . A tileset that does not cover the entire world, provides a limited set of zoom levels or uses an alternative projection are use cases for providing tileset metadata.
 
                         p.text-muted
-                            | Finally, the Tileset List Conformance Class provides a list of tileSets, described by a subset of the tileSet metadata and links to access those tileSets.
-                            | It may be useful for servers that want to advertise multiple tileSets.
+                            | Finally, the Tileset List Requirements Class provides a list of tileSets, described by a subset of the tileSet metadata and links to access those tileSets.
+                            | This may be useful for servers that want to advertise multiple tileSets.
 
                         p.text-muted
-                            | If you want to follow the development of the OGC API - Tiles, please refer to the 
+                            | If you want to follow the development of the OGC API - Tiles Standard, please refer to the 
                             a(href="https://github.com/opengeospatial/ogcapi-tiles" target="_blank") GitHub repository. 
-                            | If you want to study the API, you can check out the 
+                            | If you want to study the Tiles API, you can check out the 
                             a(href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/opengeospatial/ogcapi-tiles/master/openapi/ogcapi-tiles-1.bundled.json" target="_blank") swagger page
                             | .
 
